@@ -33,6 +33,11 @@ function request(email) {
           if(data.title == 'Member Exists') {
           	data.detail = 'You have already subscribed'
           }
+          if(data.id || data.unique_email_id) {
+          	data.title = 'success',
+          	data.status = 200;
+          	data.detail = 'Congratulations! You have subscribed successfully!'
+          }
           resolve(data);
         } catch(e) {
           resolve({status: 500, detail: 'Unable to process request', title: 'Server error'});

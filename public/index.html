@@ -61,7 +61,6 @@
     function httpRequest() {
       var email = document.getElementById('email').value;
       document.getElementById('email').value = '';
-      document.getElementById('submit').disabled = true;
       if(!validateEmail(email)) {
         return alert('Please enter a valid email')
       }
@@ -70,7 +69,6 @@
       http.open('GET', url, true);
       http.onreadystatechange = function() {
           if(http.readyState == 4) {
-            document.getElementById('submit').disabled = false;
             if(http.status == 200) {
               var result = http.responseText;
               try{
